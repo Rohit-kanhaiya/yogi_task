@@ -1,0 +1,32 @@
+<%- include('navbar.ejs') %>
+<form action="/admin/save_manage_product_category" method="post" enctype="multipart/form-data">
+<div class="container-fluid bg-white p-3 shadow">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="text-align: center;">Add Category</h3>
+        </div>
+        <div class="col-md-4">
+            Category name
+            <input type="text" name="category_name" class="form-control">
+            
+        </div>
+       
+        <div class="col-md-4">
+            category sequence
+            <input type="text" name="category_sequence" class="form-control">
+        </div>
+        <div class="col-md-5">
+            Image
+            <input type="file" accept="image/*" name="category_image" class="form-control">
+        </div>
+        <div class="col-md-12 text-center"> 
+            <button style="margin-top: 20px;" class="btn btn-primary">save</button>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+</form>
+
+<%- include('footer.ejs') %>

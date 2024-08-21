@@ -1,0 +1,43 @@
+<%- include('navbar.ejs') %>
+<div class="container-fluid bg-white p-3 shadow">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="text-align: center;">Product List</h3>
+            <a href="/admin/add_product" class="text-center" style="float: right;margin-top: -40px;"><button class="btn btn-primary">Add Product</button></a>
+        </div>
+        <table class="table mt-5">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Sub Category</th>
+              <th scope="col">Category</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%for(var i=0;i<product_info.length;i++){%>
+            <tr>
+              <td><%=product_info[i].product_id%></td>
+              <td><%=product_info[i].product_name%></td>
+              <td><%=product_info[i].subcategory_name%></td>
+              <td><%=product_info[i].category_name%></td>
+              <td><%=product_info[i].product_status%></td>
+              <td>
+                <a href="/admin/edit_product/<%=product_info[i].product_id%>">
+                  <i class="fa fa-edit text-success fs-3"></i>
+                </a>
+                <a href="/admin/delete_product/<%=product_info[i].product_id%>" onclick="return confirm('Are You Sure?')">
+                  <i class="fa fa-trash text-danger fs-3"></i>
+                </a>
+              </td>             
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs') %>

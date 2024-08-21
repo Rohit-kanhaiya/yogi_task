@@ -1,0 +1,48 @@
+<%- include('navbar.ejs') %>
+<div class="container-fluid bg-white p-3 shadow">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="text-align: center;">Sub Category List</h3>
+            <a href="/admin/add_subcategory" class="text-center" style="float: right;margin-top: -40px;"><button class="btn btn-primary">Add Sub Category</button></a>
+        </div>
+       
+        <table class="table mt-5">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Sub Category Name</th>
+              <th scope="col">Category Name</th>
+              <th scope="col">Image</th>
+              <th scope="col">Status</th>
+              <th scope="col">sequence</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%for(var i=0;i<subcategory_info.length;i++){%>
+            <tr>
+              <th><%=subcategory_info[i].subcategory_id%></th>
+              <th><%=subcategory_info[i].subcategory_name%></th>
+              <th ><%=subcategory_info[i].category_name%></th>
+              <td >
+                <img src="/uploads/<%=subcategory_info[i].subcategory_image%>" height="50px" width="50px">
+                </td>
+              <td><%=subcategory_info[i].subcategory_status%></td>
+              <td><%=subcategory_info[i].subcategory_sequence%></td>
+              <td>
+                <a href="/admin/edit_subcategory/<%=subcategory_info[i].subcategory_id%>">
+                  <i class="fa fa-edit text-success fs-3"></i>
+                </a>
+                <a href="/admin/delete_subcategory/<%=subcategory_info[i].subcategory_id%>" onclick="return confirm('Are You Sure?')">
+                  <i class="fa fa-trash text-danger fs-3"></i>
+                </a>
+              </td>             
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs') %>

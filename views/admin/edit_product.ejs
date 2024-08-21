@@ -1,0 +1,55 @@
+<%- include('navbar.ejs') %>
+<form action="/admin/update_product" method="post" enctype="multipart/form-data">
+<div class="container-fluid bg-white p-3 shadow">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="text-align: center;">Edit Product</h3>
+        </div>
+        <div class="col-md-6">
+          Category name
+          <select class="form-control" name="category_name">
+            <option disabled>Choose</option>
+            <%for(var i=0;i<category_info.length;i++){%>
+            <option value="<%=category_info[i].category_name%>"><%=category_info[i].category_name%></option>
+            <%}%>
+          </select>  
+          <input type="hidden" name="product_id" class="form-control" value="<%=product_info.product_id%>">
+      </div>
+        <div class="col-md-6">
+            Sub Category name
+            <select class="form-control" name="subcategory_name">
+              <option disabled>Choose</option>
+              <%for(var i=0;i<subcategory_info.length;i++){%>
+              <option value="<%=subcategory_info[i].subcategory_name%>"><%=subcategory_info[i].subcategory_name%></option>
+              <%}%>
+            </select>  
+        </div>
+       
+        <div class="col-md-6">
+            product Name
+            <input type="text" name="product_name" class="form-control" value="<%=product_info.product_name%>">
+        </div>
+        <div class="col-md-3">
+            Image
+            <input type="file" accept="image/*" name="product_image" class="form-control">
+        </div>
+        <div class="col-md-1">
+          <img src="/uploads/<%=product_info.product_image%>" height="100%" width="100%">
+        </div>
+        <div class="col-md-3">
+          Status
+          <select class="form-control" name="product_status">
+            <option readonly disabled>Choose</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+      </div>
+        <div class="col-md-12 text-center"> 
+            <button style="margin-top: 20px;" class="btn btn-primary">Update</button>
+        </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<%- include('footer.ejs') %>
